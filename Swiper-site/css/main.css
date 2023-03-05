@@ -1,0 +1,95 @@
+/*===================== Обнулення стилів =======================*/
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+ul,
+ol,
+li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+:root{
+	--index: calc(1vw + 1vh);
+	--transition: 1.2s cubic-bezier(.2 , .6, 0 ,1);
+}
+/*======================== Cтилі сторінки =======================*/
+html,body{
+	height: 100%;
+	overflow: hidden;
+}
+/*======================== Cтилі блоків =========================*/
+
+.swiper-container{
+	height: 100%;
+	display: flex;
+	gap: var(--index);
+	background: url('../img/bg.jpg') center/ cover  no-repeat;
+}
+.slider{
+	transform: rotate(12.5deg);
+	z-index: 1;
+	overflow: visible;
+}
+.slider:nth-child(odd){
+	transform: rotate(192.5deg);
+}
+.slider .slider__wrapper{
+	transition: var(--transition)!important;
+	will-change: transform;
+
+}
+.slider__item{
+	z-index: 2;
+	margin-bottom: calc(var(--index)* 2.6);
+	width: 20vw;
+	cursor: pointer;
+	transition: transform var(--transition);
+	will-change: transform;
+	box-shadow: rgba(0, 0, 0, 0.514) 0 0 30px 10px;
+}
+.slider__item:hover{
+	transform: scale(1.05);
+}
+
+
+.slider__img{
+	position: relative;
+	z-index: 5;
+	height: 100%;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+	border-radius: 8px;
+	transition: all 0.3s ease 0s;
+}
+
+.slider__img._active{
+	z-index: 10;
+	isolation: auto;
+	transform:scale(1.5) rotate(-12.5deg);
+}
+
+
+.slider:nth-child(odd) .slider__img{
+transform: rotate(-180deg);
+}
